@@ -51,7 +51,7 @@ namespace laba1
             MySqlCommand cmd = new MySqlCommand(sql, dbConn);
             cmd.ExecuteNonQuery();
             dbConn.Close();
-
+            Response.Redirect("Default");
         }
     }
 }
