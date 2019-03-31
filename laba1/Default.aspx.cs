@@ -102,7 +102,7 @@ namespace laba1
 
         protected void create_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Editor");
         }
     }
 }
