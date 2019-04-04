@@ -9,7 +9,7 @@
             <asp:BoundField runat="server" DataField="code" HeaderText="Уникальный код книги"/> 
             <asp:BoundField runat="server" DataField="author" HeaderText="Автор книги"/> 
             <asp:BoundField runat="server" DataField="age" HeaderText="Дата возраста"/> 
-            <asp:ButtonField CommandName="edit" Text="Редактировать" />
+            <asp:ButtonField CommandName="change" Text="Редактировать" />
             <asp:ButtonField CommandName="remove" Text="Удалить" />
         </Columns> 
     </asp:GridView>

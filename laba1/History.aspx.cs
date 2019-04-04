@@ -91,10 +91,17 @@ namespace laba1
                 Response.Redirect("History");
             }
 
+            if (e.CommandName == "change")
+            {
+                int i = Convert.ToInt32(e.CommandArgument);
+                int id = Convert.ToInt32(GridView2.Rows[i].Cells[0].Text);
+                Response.Redirect($"Editor2?id={id}");
+            }
+
         }
         protected void create_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Editor2");
         }
 
         protected void list_Click(object sender, EventArgs e)

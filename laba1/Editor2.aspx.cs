@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace laba1
 {
-    public partial class Editor : System.Web.UI.Page
+    public partial class Editor2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,18 +23,20 @@ namespace laba1
                     string strConnect = $"Server=MYSQL6001.site4now.net;Database=db_a46ad7_akilele;Uid=a46ad7_akilele;Pwd={pass.Password}";//строка для подключения к БД
                     MySqlConnection dbConn = new MySqlConnection(strConnect);
                     dbConn.Open();
-                    string sql = $"SELECT * from visitor WHERE (id = {id})";
+                    string sql = $"SELECT * from history WHERE (id = {id})";
                     MySqlCommand cmd = new MySqlCommand(sql, dbConn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     rdr.Read();
-                    fio.Text = rdr.GetString(1);
-                    number.Text = Convert.ToString(rdr.GetInt32(2));
-                    date.Text = rdr.GetDateTime(3).ToString("dd.MM.yyyy");
-                    gender.SelectedIndex = rdr.GetInt32(4);
+                    id_visitor.Text = rdr.GetString(1);
+                    date.Text = rdr.GetDateTime(2).ToString("dd.MM.yyyy");
+                    book_name.Text = rdr.GetString(3);
+                    code.Text = Convert.ToString(rdr.GetInt32(4));
+                    author.Text = rdr.GetString(5);
+                    age.Text = rdr.GetString(6);
                     dbConn.Close();
                 }
             }
-            
+
         }
 
         protected void apply_Click(object sender, EventArgs e)
@@ -44,13 +46,13 @@ namespace laba1
             MySqlConnection dbConn = new MySqlConnection(strConnect);
             dbConn.Open();
             string sql = null;
-            DateTime birth = DateTime.ParseExact(date.Text, "dd.MM.yyyy", CultureInfo.CurrentCulture);
-            if (Int32.TryParse(req, out int id)) sql = $"UPDATE visitor SET fio = '{fio.Text}', ticket_number = '{number.Text}', birth = '{birth.ToString("yyyy-MM-dd")}', gender = '{gender.SelectedValue}' WHERE id = {id}";
-            else sql = $"INSERT INTO visitor VALUES(null,'{fio.Text}','{number.Text}', '{birth.ToString("yyyy-MM-dd")}','{gender.SelectedValue}')";
+            DateTime _date = DateTime.ParseExact(date.Text, "dd.MM.yyyy", CultureInfo.CurrentCulture);
+            if (Int32.TryParse(req, out int id)) sql = $"UPDATE history SET id = '{id}', id_visitor = '{id_visitor.Text}', date = '{_date.ToString("yyyy-MM-dd")}', book_name = '{book_name.Text}', code = '{code.Text}', author = '{author.Text}', age = '{age.Text}' WHERE id = {id};";
+            else sql = $"INSERT INTO history VALUES(null,'{id_visitor.Text}', '{_date.ToString("yyyy-MM-dd")}', '{book_name.Text}', '{code.Text}', '{author.Text}', '{age.Text}')";
             MySqlCommand cmd = new MySqlCommand(sql, dbConn);
             cmd.ExecuteNonQuery();
             dbConn.Close();
-            Response.Redirect($"Default");
+            Response.Redirect($"History");
         }
     }
 }
