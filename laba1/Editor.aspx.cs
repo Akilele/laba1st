@@ -52,5 +52,9 @@ namespace laba1
             dbConn.Close();
             Response.Redirect($"Default");
         }
+        protected void default_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"Default");
+        }
     }
 }

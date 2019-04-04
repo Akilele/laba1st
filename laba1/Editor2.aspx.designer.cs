@@ -22,6 +22,15 @@ namespace laba1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form3;
         
         /// <summary>
+        /// visitor элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList visitor;
+        
+        /// <summary>
         /// id_visitor элемент управления.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,14 @@ namespace laba1 {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button apply;
+        
+        /// <summary>
+        /// history элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button history;
     }
 }

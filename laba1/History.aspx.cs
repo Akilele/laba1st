@@ -22,11 +22,11 @@ namespace laba1
             string sql = "";
             if (Int32.TryParse(req, out int id))
             {
-                sql = $"SELECT * from history WHERE id_visitor = {id}";
+                sql = $"SELECT history.*, visitor.fio FROM history join visitor on  history.id_visitor = visitor.id WHERE id_visitor = {id}";
             }
             else
             {
-                sql = "SELECT * from history";
+                sql = "SELECT history.*, visitor.fio FROM history join visitor on  history.id_visitor = visitor.id";
             }
             MySqlCommand cmd = new MySqlCommand(sql, dbConn);
             DataTable newTable = createDataTableTemplate(); //создаем таблицу, в которую будем записывать результат запроса
@@ -35,7 +35,7 @@ namespace laba1
             {
                 DataRow newRow = newTable.NewRow();
                 newRow["id"] = rdr.GetInt32(0);
-                newRow["id_visitor"] = rdr.GetInt32(1);
+                newRow["id_visitor"] = rdr.GetString(7);
                 newRow["date"] = rdr.GetDateTime(2).ToString("dd.MM.yyyy");
                 newRow["book_name"] = rdr.GetString(3);
                 newRow["code"] = rdr.GetInt32(4);
@@ -59,7 +59,7 @@ namespace laba1
             DataColumn col6 = new DataColumn("author");
             DataColumn col7 = new DataColumn("age");
             col1.DataType = System.Type.GetType("System.Int32");
-            col2.DataType = System.Type.GetType("System.Int32");
+            col2.DataType = System.Type.GetType("System.String");
             col3.DataType = System.Type.GetType("System.String");
             col4.DataType = System.Type.GetType("System.String");
             col5.DataType = System.Type.GetType("System.Int32");

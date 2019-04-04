@@ -12,4 +12,5 @@
             <asp:ListItem Value="1">Мужской</asp:ListItem>
         </asp:DropDownList></p>
     <asp:button runat="server" ID="apply" text="Применить" OnClick="apply_Click" />
+    <asp:button runat="server" ID="default" text="Список посетителей" OnClick="default_Click" />
 </form>
